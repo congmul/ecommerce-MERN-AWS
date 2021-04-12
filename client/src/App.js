@@ -1,9 +1,14 @@
 import './App.scss';
+import Nav from './components/Nav';
+import Products from './pages/Products';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="">
-      <h1>TEST</h1>
+      <Nav />
+      <Products />
+      <Footer />
     </div>
   );
 }

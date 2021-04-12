@@ -1,0 +1,63 @@
+@import '../../sass/mixin';
+
+.navBar {
+    @include flexCenter(rgb(0, 20, 60));
+    color: white;
+    // justify-content: left;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0px;
+        width: 100%;
+    
+        li {
+            float: left;
+            margin-top: 8px;
+          }
+    
+        a {
+            padding: 14px 16px;
+            color: white;
+            text-decoration: none;
+    
+            &:hover {
+                background-color: rgb(0, 47, 141);
+            }
+    
+          }
+    }
+
+    .rightNav{
+        float: right;
+    }  
+
+    input[type=text] {
+        margin-left: 10px;
+        padding: 10px;
+        font-size: 17px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        margin-top: -8px;
+        width: 430px;
+    }
+
+    .search-container button{
+        float: right;
+        padding: 10px 15px;
+        margin-right: 16px;
+        background: #ffa200;
+        font-size: 17px;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        margin-top: -8px;
+
+        &:hover{
+            background: #ff8c00;
+        }
+      }
+}
+
+
+

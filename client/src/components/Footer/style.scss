@@ -1,0 +1,6 @@
+@import '../../sass/mixin';
+
+footer {
+    @include flexCenter(lightgrey);
+    bottom: 0;
+}
