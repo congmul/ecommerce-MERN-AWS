@@ -3,18 +3,18 @@ import './style.scss';
 
 const Nav = () => {
     return (
-        <div class="navBar">
+        <div className="navBar">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li class="search-container">
+                <li className="search-container">
                     <form action="">
                         <input type="text" placeholder="Search.." name="search" />
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="submit"><i className="fa fa-search"></i></button>
                     </form>
                 </li>
-                <li class="rightNav"><a href="#">Cart</a></li>
-                <li class="rightNav"><a href="#">Orders</a></li>
-                <li class="rightNav"><a href="#">Account</a></li>
+                <li className="rightNav"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                <li className="rightNav"><a href="#">Orders</a></li>
+                <li className="rightNav"><a href="#">Account</a></li>
             </ul>
         </div>
     )
