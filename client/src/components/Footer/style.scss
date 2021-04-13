@@ -1,7 +1,7 @@
 @import '../../sass/mixin';
 
 footer {
-    @include flexCenter(rgb(0, 20, 60));
-    color: white;
-    bottom: 0;
+    @include flexCenter(rgb(230, 230, 230));
+    color: rgb(100, 100, 100);
+    font-weight: bolder;
 }
