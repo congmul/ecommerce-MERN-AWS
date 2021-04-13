@@ -2,37 +2,43 @@
     {
         "category": "women",
         "createdAt": 1502293460904,
-        "title": 
-            "Scoop Neck Crop Tank Top With Bik"
+        "title": "Scoop Neck Crop Tank Top With Bik",
+        "price": "17.00"
     },
     {
         "category": "women",
         "createdAt": 1601093467954,
-        "title": "High Waist Ripped Jeans"
+        "title": "High Waist Ripped Jeans",
+        "price": "12.00"
     },
     {
         "category": "women",
         "createdAt": 1602003067054,
-        "title": "High Waist Chain Detail Mom Jeans"
+        "title": "High Waist Chain Detail Mom Jeans",
+        "price": "7.00"
     },
     {
         "category": "women",
         "createdAt": 1602003407954,
-        "title": "Graphic Shorts Bikini Swimsuit"
+        "title": "Graphic Shorts Bikini Swimsuit",
+        "price": "12.00"
     },
     {
         "category": "women",
         "createdAt": 1602000067954,
-        "title": "Rhinestone Constellation Sign Charm Necklace"
+        "title": "Rhinestone Constellation Sign Charm Necklace",
+        "price": "15.00"
     },
     {
         "category": "women",
         "createdAt": 1601003667954,
-        "title": "Maternity Eyelash Lace Panel Colorblock Top"
+        "title": "Maternity Eyelash Lace Panel Colorblock Top",
+        "price": "21.00"
     },
     {
         "category": "women",
         "createdAt": 1602303867954,
-        "title": "Button Front Puff Sleeve Polka Do"
+        "title": "Button Front Puff Sleeve Polka D",
+        "price": "11.00"
    }
 ]

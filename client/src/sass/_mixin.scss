@@ -15,10 +15,10 @@
     height: $heightSize;
 }
 
-@mixin productCard($widthSize, $margin) {
+@mixin productCard($widthSize, $heightSize, $margin) {
     float: left;
     margin: $margin;
-    // height: $heightSize;
+    height: $heightSize;
     width: $widthSize;
 }
 

@@ -7,10 +7,15 @@
         @include productCardCollection;
     }
     .productCard {
-        @include productCard(250px, 25px 15px);
+        @include productCard(250px, 346px, 25px 15px);
     
         .nameonproductCard {
             @include nameonproductCard;
+            display: block;
+            width: 250px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         .priceonproductCard{
             @include priceonproductCard;
@@ -26,10 +31,15 @@
         @include productCardCollection;
     }
     .productCard {
-        @include productCard(200px, 25px 15px);
+        @include productCard(200px, 346px, 25px 15px);
     
         .nameonproductCard {
             @include nameonproductCard;
+            display: block;
+            width: 200px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         .priceonproductCard{
             @include priceonproductCard;
@@ -45,10 +55,15 @@
         @include productCardCollection;
     }
     .productCard {
-        @include productCard(150px, 10px 5px);
+        @include productCard(150px, 245px, 10px 5px);
     
         .nameonproductCard {
             @include nameonproductCard;
+            display: block;
+            width: 150px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         .priceonproductCard{
             @include priceonproductCard;

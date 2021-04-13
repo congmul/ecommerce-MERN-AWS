@@ -16,7 +16,8 @@ allProducts.forEach(product => {
         Item: {
             "category": product.category,
             "createdAt": product.createdAt,
-            "title": product.title
+            "title": product.title,
+            "price": product.price
         }
     }
 
