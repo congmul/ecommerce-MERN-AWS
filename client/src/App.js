@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.scss';
 import Nav from './components/Nav';
 import Products from './pages/Products';
@@ -5,11 +6,13 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div>
+    <Router>
       <Nav />
-      <Products />
+      <Switch>
+        <Route exact path="/" component={Products} />
+      </Switch>
       <Footer />
-    </div>
+    </Router>
   );
 }
 
