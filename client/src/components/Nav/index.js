@@ -8,7 +8,7 @@ const Nav = () => {
                 <li><a href="#">Home</a></li>
                 <li className="search-container">
                     <form action="">
-                        <input type="text" placeholder="Search.." name="search" />
+                        <input type="text" placeholder="Search" name="search" />
                             <button type="submit"><i className="fa fa-search"></i></button>
                     </form>
                 </li>

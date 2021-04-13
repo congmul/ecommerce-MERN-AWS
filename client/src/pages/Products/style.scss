@@ -1,0 +1,60 @@
+@import '../../sass/mixin';
+@import '../../sass/variables';
+
+
+@media screen and (min-width: $mediumSize){
+    .cardCollection {
+        @include productCardCollection;
+    }
+    .productCard {
+        @include productCard(250px, 25px 15px);
+    
+        .nameonproductCard {
+            @include nameonproductCard;
+        }
+        .priceonproductCard{
+            @include priceonproductCard;
+        }
+    }
+    .imgonProductCard {
+        @include imgonProductCard(250px, 300px);
+    }
+}
+
+@media screen and (max-width: $mediumSize){
+    .cardCollection {
+        @include productCardCollection;
+    }
+    .productCard {
+        @include productCard(200px, 25px 15px);
+    
+        .nameonproductCard {
+            @include nameonproductCard;
+        }
+        .priceonproductCard{
+            @include priceonproductCard;
+        }
+    }
+    .imgonProductCard {
+        @include imgonProductCard(200px, 270px);
+    }
+}
+
+@media screen and (max-width: $smallSize){
+    .cardCollection {
+        @include productCardCollection;
+    }
+    .productCard {
+        @include productCard(150px, 10px 5px);
+    
+        .nameonproductCard {
+            @include nameonproductCard;
+        }
+        .priceonproductCard{
+            @include priceonproductCard;
+        }
+    }
+    .imgonProductCard {
+        @include imgonProductCard(150px, 200px);
+    }
+}

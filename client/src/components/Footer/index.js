@@ -4,7 +4,7 @@ import './style.scss';
 
 const Footer = () => {
   return (
-    <footer className="">
+    <footer>
       <div>&copy;2021 by Jehyun Jung</div>
     </footer>
   );
