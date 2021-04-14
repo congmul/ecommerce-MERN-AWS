@@ -22,7 +22,7 @@ function Products() {
             try {
                 const res = await fetch('/api/products');
                 const jsonData = await res.json();
-                console.log(jsonData);
+                // console.log(jsonData);
                 // sort the array by createdAt property ordered by descending values
                 const data = jsonData.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
                 setProducts([...data]);
