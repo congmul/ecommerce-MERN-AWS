@@ -1,0 +1,90 @@
+.signIn-register{
+    padding: 50px 10px;
+    width:99%;
+    display: inline-block;
+
+    input {
+        padding: 10px;
+        width: 250px;
+    }
+
+    .submit{
+        width: 275px;
+        color: white;
+        font-size: 15px;
+        font-weight: bolder;
+        background-color: black;
+        cursor: pointer;
+
+        &:hover{
+            background-color: rgb(31, 31, 31);
+        }
+    }
+
+    .signIn-register-center{
+        display: flex;
+        float: left;
+        position: absolute;
+        left: 50%;
+        width: 19%;
+        height: 400px;
+        border-left: 1px solid rgba(187, 187, 187, 0.7);
+        justify-content: center;
+    }
+
+    .signIn-register-left{
+        display: flex;
+        float: left;
+        width: 30%;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        margin-left:20%;
+
+        #title-signIn{
+            font-size: 18px;
+            text-align: center;
+        }
+
+        #forgot-password{
+            text-align: center;
+            color: rgb(50, 50, 50)
+        }
+
+    }
+    .signIn-register-right{
+        display: flex;
+        float: right;
+        width: 30%;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        margin-right:20%;
+
+        #title-signUp{
+            font-size: 18px;
+            text-align: center;
+        }
+    }
+}
+
+.custom-margin-signIn-register{
+    margin-top: 20px;
+    display: block;
+}
+
+.custom-myHr{
+    display: flex;
+    width:40%;
+    float: left;
+    margin:50px 0px;
+}
+.custom-Or{
+    display: flex;
+    width: 5%;
+    float: left;
+    margin:42px 20px;
+    color: rgb(100, 100, 100);
+    justify-content: center;
+    align-items: center;
+}
