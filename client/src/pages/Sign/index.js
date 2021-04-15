@@ -21,7 +21,7 @@ function Sign() {
         let userInput = e.target.value.trim();
         // console.log(userInput);
 
-        let isSpecial = "~`!#$%^&*+=-[]\\\';,/{}|\":<>?@";
+        let isSpecial = "~`!#$%^&*+=-[]\\';,/{}|\":<>?@";
         let isNumbers = "0123456789";
         let isChars = "abcdefghijklmnopqrstuvwxyz";
 
@@ -75,9 +75,9 @@ function Sign() {
                 <div id="signIn">
                     <h3 id="title-signIn">Sign In</h3>
                     <form action="/action_page.php">
-                        <label for="email" className="custom-margin-signIn-register">Email Address:</label>
+                        <label className="custom-margin-signIn-register">Email Address:</label>
                         <input type="text" id="fname" name="email" />
-                        <label for="password" className="custom-margin-signIn-register">Password:</label>
+                        <label className="custom-margin-signIn-register">Password:</label>
                         <input type="password" id="lname" name="password" />
                         <input type="submit" value="SIGN IN" className="custom-margin-signIn-register submit" />
                     </form>
@@ -98,18 +98,18 @@ function Sign() {
                 <div id="signUp">
                     <h3 id="title-signUp">New to KANGJUNG</h3>
                     <form action="/action_page.php">
-                        <label for="email" className="custom-margin-signIn-register">Email Address:</label>
-                        <input type="text" id="fname" name="email" />
-                        <label for="password" className="custom-margin-signIn-register">Password:</label>
-                        <input type="password" id="lname" name="password" onFocus={onfocusPassword} onChange={handleChange}/>
+                        <label className="custom-margin-signIn-register">Email Address:</label>
+                        <input type="text" id="signUp-email" name="signUp-email" />
+                        <label className="custom-margin-signIn-register">Password:</label>
+                        <input type="password" id="signUp-password" name="signUp-password" onFocus={onfocusPassword} onChange={handleChange}/>
                         <div className="caution-password" style={{"display": cautionPasswordState}}>
                             <span style={{"color": caution8State}}>* 8 characters minimum</span>
                             <span style={{"color": cautionSpecialState}}>* At least one special character</span>
                             <span style={{"color": cautionNumberState}}>* At least one number</span>
                             <span style={{"color": cautionLetterState}}>* At least one lowercase letter</span>
                         </div>
-                        <label for="confirm-password" className="custom-margin-signIn-register">Confirm Password:</label>
-                        <input type="password" id="lname" name="confirm-password" />
+                        <label className="custom-margin-signIn-register">Confirm Password:</label>
+                        <input type="password" id="confirm-password" name="confirm-password" />
                         <input type="submit" value="REGISTER" className="custom-margin-signIn-register submit" />
                     </form>
                 </div>

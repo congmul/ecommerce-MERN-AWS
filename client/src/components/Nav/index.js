@@ -40,10 +40,10 @@ const Nav = () => {
                     </div>
                     <div className="dropdown-content">
                         {/* <Link to="#">CART BOX</Link> */}
-                        <p style={{"color":"rgb(100, 100, 100)"}}>
-                            <p>Shopping Bag is Empty</p>
+                        <span style={{"color":"rgb(100, 100, 100)"}}>
+                            <span>Shopping Bag is Empty</span>
                             Welcome back! If you had items in your shopping bag, we have saved them for you. You can <Link to="/sign" style={{"float":"right"}}>SIGN IN</Link>now to see them, or whenever you're ready to check out.
-                        </p>
+                        </span>
                     </div>
                 </div>
                 <div className="dropdown">
