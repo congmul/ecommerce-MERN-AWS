@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const userRoutes = require('./routes/user-routes');
+const cognitoRoutes = require('./routes/cognito-routes');
 
 // express middleware, used to be bodyparser
 app.use(express.json());
@@ -12,6 +13,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
   }
 
+app.use('/api/', cognitoRoutes);
 app.use('/api/', userRoutes);
 
 // Start the API server

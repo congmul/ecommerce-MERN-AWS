@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function SignUp() {
+    const history = useHistory();
 
     const [emailAddressSingUpState, setEmailAddressSingUpState] = useState("");
     const [passWordSingUpState, setPassWordSingUpState] = useState("");
@@ -128,9 +130,33 @@ function SignUp() {
             console.log("Something wrong")
        }else{
             setConfirmPasswordNOticeStyleState("none");
-            console.log(emailAddressSingUpState);
-            console.log(passWordSingUpState);
-            console.log(confirmPassWordSingUpState);
+            // console.log(emailAddressSingUpState);
+            // console.log(passWordSingUpState);
+            // console.log(confirmPassWordSingUpState);
+            const userInformation = {
+                "email": emailAddressSingUpState,
+                "password": passWordSingUpState
+            }
+
+            async function signUp(userInformation){
+                const response = await fetch("/api/signup", {
+                    method: 'POST',
+                    body: JSON.stringify(userInformation),
+                    headers: { "Content-type": "application/json; charset=UTF-8" }
+                })
+                return response.json();
+            }
+
+            signUp(userInformation)
+            .then(data => {
+                if(data.err){
+                    console.log(data.err)
+                }else{
+                    console.log(data);
+                    history.push("/")
+                }
+            });
+    
        }
     }
 
