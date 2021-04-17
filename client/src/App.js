@@ -6,6 +6,11 @@ import Sign from './pages/Sign';
 import Products from './pages/Products';
 import Footer from './components/Footer';
 
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+
+Amplify.configure(awsconfig);
+
 function App() {
   return (
     <Router>

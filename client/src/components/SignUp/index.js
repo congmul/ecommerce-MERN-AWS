@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { Auth } from 'aws-amplify';
+
 function SignUp() {
     const history = useHistory();
 
@@ -19,6 +21,23 @@ function SignUp() {
     const [cautionSpecialState, setCautionSpecialState] = useState("rgb(100, 100, 100)");
     const [cautionNumberState, setCautionNumberState] = useState("rgb(100, 100, 100)");
     const [cautionLetterState, setCautionLetterState] = useState("rgb(100, 100, 100)");
+
+    async function signUp(username, password) {
+        try {
+            const { user } = await Auth.signUp({
+                username,
+                password,
+                attributes: {
+                    email : username,          // optional
+                    // other custom attributes 
+                }
+            });
+            console.log(user);
+        } catch (error) {
+            console.log('error signing up:', error);
+        }
+    }
+
 
     useEffect(() =>{
         if(emailAddressSingUpState && passWordSingUpState && confirmPassWordSingUpState && caution8State === "#00c200" && cautionSpecialState === "#00c200" && cautionNumberState === "#00c200" && cautionLetterState === "#00c200" && emailNOticeStyleState === "none"){
@@ -137,25 +156,25 @@ function SignUp() {
                 "email": emailAddressSingUpState,
                 "password": passWordSingUpState
             }
+            signUp(emailAddressSingUpState, passWordSingUpState);
+            // async function signUp(userInformation){
+            //     const response = await fetch("/api/signup", {
+            //         method: 'POST',
+            //         body: JSON.stringify(userInformation),
+            //         headers: { "Content-type": "application/json; charset=UTF-8" }
+            //     })
+            //     return response.json();
+            // }
 
-            async function signUp(userInformation){
-                const response = await fetch("/api/signup", {
-                    method: 'POST',
-                    body: JSON.stringify(userInformation),
-                    headers: { "Content-type": "application/json; charset=UTF-8" }
-                })
-                return response.json();
-            }
-
-            signUp(userInformation)
-            .then(data => {
-                if(data.err){
-                    console.log(data.err)
-                }else{
-                    console.log(data);
-                    history.push("/")
-                }
-            });
+            // signUp(userInformation)
+            // .then(data => {
+            //     if(data.err){
+            //         console.log(data.err)
+            //     }else{
+            //         console.log(data);
+            //         history.push("/")
+            //     }
+            // });
     
        }
     }
