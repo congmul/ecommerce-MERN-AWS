@@ -1,0 +1,14 @@
+.codeConfirmClass{
+   button {
+       padding: 12px;
+       width: 137.5px;
+       background-color: black;
+       color: white;
+       font-weight: bolder;
+       cursor: pointer;
+
+    &:hover{
+        background-color: rgb(31, 31, 31);
+    }
+   }
+}

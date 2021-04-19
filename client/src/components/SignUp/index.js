@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import './style.scss';
 
 import { Auth } from 'aws-amplify';
 
 function SignUp() {
+    const history = useHistory();
 
     const [userNameState, setUserNameState] = useState("");
     const [emailAddressSingUpState, setEmailAddressSingUpState] = useState("");
@@ -11,6 +14,10 @@ function SignUp() {
 
     const [userConfirmCodeState, setUserConfirmCodeState] = useState("");
 
+    const [displaySignUpFormState, setDisplaySignUpFormState] = useState("block");
+    const [displayConfirmCodeState, setDisplayConfirmCodeState] = useState("none");
+
+    const [userNameNoticeStyleState, setUserNameNoticeStyleState] = useState("none");
     const [emailNOticeStyleState, setEmailNOticeStyleState] = useState("none");
     const [cautionPasswordNoticeStyleState, setCautionPasswordNoticeStyleState] = useState("none");
     const [confirmPasswordNOticeStyleState, setConfirmPasswordNOticeStyleState] = useState("none");
@@ -29,35 +36,39 @@ function SignUp() {
                 username: userName,
                 password: password,
                 attributes: {
-                    email : email,          // optional
+                    email: email,          // optional
                     // other custom attributes 
                 }
             });
             console.log(user);
+            setDisplayConfirmCodeState("block");
+            setDisplaySignUpFormState("none");
         } catch (error) {
             console.log('error signing up:', error);
         }
     }
 
 
-    useEffect(() =>{
-        if(emailAddressSingUpState && passWordSingUpState && confirmPassWordSingUpState && caution8State === "#00c200" && cautionSpecialState === "#00c200" && cautionNumberState === "#00c200" && cautionLetterState === "#00c200" && emailNOticeStyleState === "none"){
+    useEffect(() => {
+        if (emailAddressSingUpState && passWordSingUpState && confirmPassWordSingUpState && caution8State === "#00c200" && cautionSpecialState === "#00c200" && cautionNumberState === "#00c200" && cautionLetterState === "#00c200" && emailNOticeStyleState === "none") {
             setRegisterDisabledButtonState("none");
             setRegisterButtonState("block");
-        }else{
+        } else {
             setRegisterDisabledButtonState("block");
             setRegisterButtonState("none");
         }
 
-    },[emailAddressSingUpState, passWordSingUpState, confirmPassWordSingUpState, caution8State, cautionSpecialState, cautionNumberState, cautionLetterState, emailNOticeStyleState])
-
-    const handleUserNameChange = (e) =>{
-        console.log(e.target.value)
-    }
+    }, [emailAddressSingUpState, passWordSingUpState, confirmPassWordSingUpState, caution8State, cautionSpecialState, cautionNumberState, cautionLetterState, emailNOticeStyleState])
 
     const handleUserNameFocusOut = (e) => {
-        setUserNameState(e.target.value);
-        console.log(e.target.value)
+        if(e.target.value === ""){
+            console.log("User Name required");
+            setUserNameNoticeStyleState("block");
+
+        }else{
+            setUserNameNoticeStyleState("none");
+            setUserNameState(e.target.value);
+        }
     }
 
 
@@ -66,21 +77,21 @@ function SignUp() {
         return re.test(String(email).toLowerCase());
     }
 
-    function onfocusPassword(){
+    function onfocusPassword() {
         setCautionPasswordNoticeStyleState("block");
     }
 
-    const handleEmailChange = e =>{
+    const handleEmailChange = e => {
         e.preventDefault();
         let userEmail = e.target.value.trim();
         setEmailAddressSingUpState(userEmail);
     }
 
-    const handleEmailFocusOut = e =>{
+    const handleEmailFocusOut = e => {
         e.preventDefault();
-        if(!validateEmail(emailAddressSingUpState)){
+        if (!validateEmail(emailAddressSingUpState)) {
             setEmailNOticeStyleState("block")
-        }else{
+        } else {
             setEmailNOticeStyleState("none");
         };
     }
@@ -95,59 +106,59 @@ function SignUp() {
         let isNumbers = "0123456789";
         let isChars = "abcdefghijklmnopqrstuvwxyz";
 
-        if(userInput.length >= 8){
+        if (userInput.length >= 8) {
             setCaution8State("#00c200");
-            
-        }else{
+
+        } else {
             setCaution8State("red");
-           
+
         }
 
-        if(userInput){
-            for(let i = 0; i < userInput.length; i++){
+        if (userInput) {
+            for (let i = 0; i < userInput.length; i++) {
                 // console.log(iChars.charAt(userInput[i]));
-                if(isSpecial.includes(userInput[i])){
+                if (isSpecial.includes(userInput[i])) {
                     setCautionSpecialState("#00c200");
-                    
+
                     break;
-                }else{
+                } else {
                     setCautionSpecialState("red");
-                   
+
                 }
             }
 
 
-            for(let i = 0; i < userInput.length; i++){
-                if(isNumbers.includes(userInput[i])){
+            for (let i = 0; i < userInput.length; i++) {
+                if (isNumbers.includes(userInput[i])) {
                     setCautionNumberState("#00c200");
-                    
+
                     break;
-                }else{
+                } else {
                     setCautionNumberState("red");
-                   
+
                 }
             }
 
 
-            for(let i = 0; i < userInput.length; i++){
-                if(isChars.includes(userInput[i])){
+            for (let i = 0; i < userInput.length; i++) {
+                if (isChars.includes(userInput[i])) {
                     setCautionLetterState("#00c200");
-                    
+
                     break;
-                }else{
+                } else {
                     setCautionLetterState("red");
-                   
+
                 }
             }
-        }else{
+        } else {
             setCautionSpecialState("red");
             setCautionNumberState("red");
             setCautionLetterState("red");
         }
-        
+
     }
 
-    const handleConfrimPassWordChange = e =>{
+    const handleConfrimPassWordChange = e => {
         e.preventDefault();
         let userPassword = e.target.value.trim();
         setConfirmPassWordSingUpState(userPassword);
@@ -155,13 +166,13 @@ function SignUp() {
 
     const submitSignUp = e => {
         e.preventDefault();
-       if(passWordSingUpState !== confirmPassWordSingUpState){
+        if (passWordSingUpState !== confirmPassWordSingUpState) {
             setConfirmPasswordNOticeStyleState("block");
             console.log("Something wrong")
-       }else{
+        } else {
             setConfirmPasswordNOticeStyleState("none");
             signUp(userNameState, emailAddressSingUpState, passWordSingUpState);
-       }
+        }
     }
 
     const confirmChange = e => {
@@ -175,54 +186,89 @@ function SignUp() {
         e.preventDefault();
 
         confirmSignUp(userNameState, userConfirmCodeState)
-        .then(() => console.log('confirmed'));
+            .then((error) => {
+                if(error){
+                    alert('Wrong Code');
+                }else{
+                    alert('confirmed');
+                    history.push("/");
+                }
+            });
 
         async function confirmSignUp(email, code) {
             try {
-              await Auth.confirmSignUp(email, code);
+                await Auth.confirmSignUp(email, code);
             } catch (error) {
                 console.log('error confirming sign up', error);
+                return error;
+            }
+        }
+
+    }
+
+    const resendCode = (e) => {
+        e.preventDefault();
+
+        resendConfirmationCode(userNameState)
+        .then(error =>{
+            if(error){
+                console.log(error)
+            }
+        })
+
+        async function resendConfirmationCode(username) {
+            try {
+                await Auth.resendSignUp(username);
+                alert('CODE resent successfully');
+            } catch (err) {
+                console.log('error resending code: ', err);
+                return err;
             }
         }
 
     }
 
     return (
-            <div className="signIn-register-right">
-                <div id="signUp">
-                    <h3 id="title-signUp">New to KANGJUNG</h3>
-                    <form>
-                        <label className="custom-margin-signIn-register">User name:</label>
-                        <input type="text" onChange={handleUserNameChange} onBlur={handleUserNameFocusOut}/>
-                        
-                        <label className="custom-margin-signIn-register">Email Address:</label>
-                        <input type="text" id="signUp-email" name="signUp-email" onChange={handleEmailChange} onBlur={handleEmailFocusOut}/>
-                        <div className="caution-confirm-password" style={{"display": emailNOticeStyleState}}>
-                        <span style={{"color": "red", "marginBottom": "3px"}}>The email you entered is invalid.</span>
-                        <span style={{"color": "red"}}>Please check your email and try again.</span>
-                        </div>
-                        <label className="custom-margin-signIn-register">Password:</label>
-                        <input type="password" id="signUp-password" name="signUp-password" onFocus={onfocusPassword} onChange={handlePassWordChange}/>
-                        <div className="caution-password" style={{"display": cautionPasswordNoticeStyleState}}>
-                            <span style={{"color": caution8State}}>* 8 characters minimum</span>
-                            <span style={{"color": cautionSpecialState}}>* At least one special character</span>
-                            <span style={{"color": cautionNumberState}}>* At least one number</span>
-                            <span style={{"color": cautionLetterState}}>* At least one lowercase letter</span>
-                        </div>
-                        <label className="custom-margin-signIn-register">Confirm Password:</label>
-                        <input type="password" id="confirm-password" name="confirm-password" onChange={handleConfrimPassWordChange} />
-                        <div className="caution-confirm-password" style={{"display": confirmPasswordNOticeStyleState}}>
-                        <span style={{"color": "red"}}>Your passwords do not match, please try again.</span>
-                        </div>
-                        <button className="custom-margin-signIn-register submit" onClick={submitSignUp} style={{"display": registerButtonState}}>REGISTER</button>
-                        <button className="custom-margin-signIn-register submit" onClick={submitSignUp} disabled style={{"display": registerDisabledButtonState}}>REGISTER</button>
-                    </form>
+        <div className="signIn-register-right">
+            <div id="signUp">
+                <h3 id="title-signUp">New to KANGJUNG</h3>
+                <form style={{"display" : displaySignUpFormState}}> 
+                    <label className="custom-margin-signIn-register">User name:</label>
+                    <input type="text" onBlur={handleUserNameFocusOut} />
+                    <div className="caution-username" style={{ "display": userNameNoticeStyleState }}>
+                        <span style={{ "color": "red" }}>User name required</span>
+                    </div>
+                    <label className="custom-margin-signIn-register">Email Address:</label>
+                    <input type="text" id="signUp-email" name="signUp-email" onChange={handleEmailChange} onBlur={handleEmailFocusOut} />
+                    <div className="caution-confirm-password" style={{ "display": emailNOticeStyleState }}>
+                        <span style={{ "color": "red", "marginBottom": "3px" }}>The email you entered is invalid.</span>
+                        <span style={{ "color": "red" }}>Please check your email and try again.</span>
+                    </div>
+                    <label className="custom-margin-signIn-register">Password:</label>
+                    <input type="password" id="signUp-password" name="signUp-password" onFocus={onfocusPassword} onChange={handlePassWordChange} />
+                    <div className="caution-password" style={{ "display": cautionPasswordNoticeStyleState }}>
+                        <span style={{ "color": caution8State }}>* 8 characters minimum</span>
+                        <span style={{ "color": cautionSpecialState }}>* At least one special character</span>
+                        <span style={{ "color": cautionNumberState }}>* At least one number</span>
+                        <span style={{ "color": cautionLetterState }}>* At least one lowercase letter</span>
+                    </div>
+                    <label className="custom-margin-signIn-register">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" onChange={handleConfrimPassWordChange} />
+                    <div className="caution-confirm-password" style={{ "display": confirmPasswordNOticeStyleState }}>
+                        <span style={{ "color": "red" }}>Your passwords do not match, please try again.</span>
+                    </div>
+                    <button className="custom-margin-signIn-register submit" onClick={submitSignUp} style={{ "display": registerButtonState }}>REGISTER</button>
+                    <button className="custom-margin-signIn-register submit" onClick={submitSignUp} disabled style={{ "display": registerDisabledButtonState }}>REGISTER</button>
+                </form>
                 <br />
-                <input id="userCode" onChange={confirmChange}/>
-                <button id="confirmBtn" className="submit" onClick={confirmCode}>Confirm</button>
+                <div style={{"display":displayConfirmCodeState}} className="codeConfirmClass">
+                    <input onChange={confirmChange} /><br /><br />
+                    <button onClick={confirmCode}>CONFIRM</button>
+                    <button onClick={resendCode}>RESEND</button>
                 </div>
-
             </div>
+
+        </div>
     )
 }
 
