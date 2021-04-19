@@ -12,7 +12,6 @@ function App() {
   return (
     <Router>
       <Nav />
-      <button onClick={() => Auth.federatedSignIn({ provider: "Google"})}> Sign in with google</button>
       <Switch>
         <Route exact path="/" component={Products} />
         <Route exact path="/sign" component={Sign} />
