@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "ecommercea90f3e5e_identitypool_a90f3e5e",
+    "identityPoolName": "ecommercefe89540f_identitypool_fe89540f",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "ecommea90f3e5e",
-    "userPoolName": "ecommercea90f3e5e_userpool_a90f3e5e",
+    "resourceNameTruncated": "ecommefe89540f",
+    "userPoolName": "ecommercefe89540f_userpool_fe89540f",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "ecommea90f3e5e_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "ecommefe89540f_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "a90f3e5e",
-    "resourceName": "ecommercea90f3e5e",
+    "sharedId": "fe89540f",
+    "resourceName": "ecommercefe89540f",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -45,15 +45,7 @@
             "Arn"
         ]
     },
-    "useDefault": "defaultSocial",
-    "hostedUI": true,
-    "usernameAttributes": [
-        "email"
-    ],
-    "hostedUIDomainName": "ecommercea90f3e5e-a90f3e5e",
-    "authProvidersUserPool": [],
-    "hostedUIProviderMeta": "[]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
+    "useDefault": "default",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

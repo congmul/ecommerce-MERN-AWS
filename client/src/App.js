@@ -6,15 +6,13 @@ import Sign from './pages/Sign';
 import Products from './pages/Products';
 import Footer from './components/Footer';
 
-import Amplify, { Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
-
-Amplify.configure(awsconfig);
+import { Auth } from 'aws-amplify'
 
 function App() {
   return (
     <Router>
       <Nav />
+      <button onClick={() => Auth.federatedSignIn({ provider: "Google"})}> Sign in with google</button>
       <Switch>
         <Route exact path="/" component={Products} />
         <Route exact path="/sign" component={Sign} />

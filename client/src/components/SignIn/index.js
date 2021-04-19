@@ -1,7 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { Auth } from 'aws-amplify';
 
 function SignIn() {
+
+    async function checkUser(){
+        const user = await Auth.currentAuthenticatedUser()
+        console.log('user: ', user)
+    }
+
     return (
         <div className="signIn-register-left">
             <div id="signIn">
@@ -18,10 +25,16 @@ function SignIn() {
                 <span className="custom-Or">or</span>
                 <div className="myHr custom-myHr"></div>
                 <div>
-                    <button>Sign In With FACEBOOK</button>
+                    <button onClick={() => Auth.federatedSignIn({ provider: "Facebook" })}>Sign In With Facebook</button>
                 </div>
                 <div>
-                    <button>Sign In With GOOGLE</button>
+                    <button onClick={() => Auth.federatedSignIn({ provider: "Google" })}>Sign In With GOOGLE</button>
+                </div>
+                <div>
+                    <button onClick={() => Auth.federatedSignIn()}>Sign In</button>
+                </div>
+                <div>
+                    <button onClick={ checkUser }>Check User</button>
                 </div>
             </div>
         </div>

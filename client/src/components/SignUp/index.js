@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { Auth } from 'aws-amplify';
 
 function SignUp() {
-    const history = useHistory();
 
+    const [userNameState, setUserNameState] = useState("");
     const [emailAddressSingUpState, setEmailAddressSingUpState] = useState("");
     const [passWordSingUpState, setPassWordSingUpState] = useState("");
     const [confirmPassWordSingUpState, setConfirmPassWordSingUpState] = useState("");
+
+    const [userConfirmCodeState, setUserConfirmCodeState] = useState("");
 
     const [emailNOticeStyleState, setEmailNOticeStyleState] = useState("none");
     const [cautionPasswordNoticeStyleState, setCautionPasswordNoticeStyleState] = useState("none");
@@ -22,13 +23,13 @@ function SignUp() {
     const [cautionNumberState, setCautionNumberState] = useState("rgb(100, 100, 100)");
     const [cautionLetterState, setCautionLetterState] = useState("rgb(100, 100, 100)");
 
-    async function signUp(username, password) {
+    async function signUp(userName, email, password) {
         try {
             const { user } = await Auth.signUp({
-                username,
-                password,
+                username: userName,
+                password: password,
                 attributes: {
-                    email : username,          // optional
+                    email : email,          // optional
                     // other custom attributes 
                 }
             });
@@ -49,6 +50,16 @@ function SignUp() {
         }
 
     },[emailAddressSingUpState, passWordSingUpState, confirmPassWordSingUpState, caution8State, cautionSpecialState, cautionNumberState, cautionLetterState, emailNOticeStyleState])
+
+    const handleUserNameChange = (e) =>{
+        console.log(e.target.value)
+    }
+
+    const handleUserNameFocusOut = (e) => {
+        setUserNameState(e.target.value);
+        console.log(e.target.value)
+    }
+
 
     function validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -149,34 +160,31 @@ function SignUp() {
             console.log("Something wrong")
        }else{
             setConfirmPasswordNOticeStyleState("none");
-            // console.log(emailAddressSingUpState);
-            // console.log(passWordSingUpState);
-            // console.log(confirmPassWordSingUpState);
-            const userInformation = {
-                "email": emailAddressSingUpState,
-                "password": passWordSingUpState
-            }
-            signUp(emailAddressSingUpState, passWordSingUpState);
-            // async function signUp(userInformation){
-            //     const response = await fetch("/api/signup", {
-            //         method: 'POST',
-            //         body: JSON.stringify(userInformation),
-            //         headers: { "Content-type": "application/json; charset=UTF-8" }
-            //     })
-            //     return response.json();
-            // }
-
-            // signUp(userInformation)
-            // .then(data => {
-            //     if(data.err){
-            //         console.log(data.err)
-            //     }else{
-            //         console.log(data);
-            //         history.push("/")
-            //     }
-            // });
-    
+            signUp(userNameState, emailAddressSingUpState, passWordSingUpState);
        }
+    }
+
+    const confirmChange = e => {
+        e.preventDefault();
+        let userconfirm = e.target.value.trim();
+        console.log(userconfirm)
+        setUserConfirmCodeState(userconfirm);
+
+    }
+    const confirmCode = (e) => {
+        e.preventDefault();
+
+        confirmSignUp(userNameState, userConfirmCodeState)
+        .then(() => console.log('confirmed'));
+
+        async function confirmSignUp(email, code) {
+            try {
+              await Auth.confirmSignUp(email, code);
+            } catch (error) {
+                console.log('error confirming sign up', error);
+            }
+        }
+
     }
 
     return (
@@ -184,6 +192,9 @@ function SignUp() {
                 <div id="signUp">
                     <h3 id="title-signUp">New to KANGJUNG</h3>
                     <form>
+                        <label className="custom-margin-signIn-register">User name:</label>
+                        <input type="text" onChange={handleUserNameChange} onBlur={handleUserNameFocusOut}/>
+                        
                         <label className="custom-margin-signIn-register">Email Address:</label>
                         <input type="text" id="signUp-email" name="signUp-email" onChange={handleEmailChange} onBlur={handleEmailFocusOut}/>
                         <div className="caution-confirm-password" style={{"display": emailNOticeStyleState}}>
@@ -206,7 +217,11 @@ function SignUp() {
                         <button className="custom-margin-signIn-register submit" onClick={submitSignUp} style={{"display": registerButtonState}}>REGISTER</button>
                         <button className="custom-margin-signIn-register submit" onClick={submitSignUp} disabled style={{"display": registerDisabledButtonState}}>REGISTER</button>
                     </form>
+                <br />
+                <input id="userCode" onChange={confirmChange}/>
+                <button id="confirmBtn" className="submit" onClick={confirmCode}>Confirm</button>
                 </div>
+
             </div>
     )
 }
