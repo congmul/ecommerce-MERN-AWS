@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './style.scss'
 
 import demo_01 from '../../assets/img/demo_01.png'
-import demo_02 from '../../assets/img/demo_02.png'
+// import demo_02 from '../../assets/img/demo_02.png'
 
 function Products() {
 
@@ -10,12 +10,12 @@ function Products() {
     const [products, setProducts] = useState([]);
     const [imageState, setImageState] = useState(demo_01);
 
-    function mouseOver() {
-        setImageState(demo_02);
-    }
-    function mouseOut() {
-        setImageState(demo_01);
-    }
+    // function mouseOver() {
+    //     setImageState(demo_02);
+    // }
+    // function mouseOut() {
+    //     setImageState(demo_01);
+    // }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,14 +39,14 @@ function Products() {
         <div className="cardCollection">
             {!isLoaded ? (<div>Loading...</div>) : (
                 products.map(product => {
-                    return (<div className="productCard" key={product.title} onMouseOver={mouseOver} onMouseOut={mouseOut}>
+                    // return (<div className="productCard" key={product.title} onMouseOver={mouseOver} onMouseOut={mouseOut}>
+                    return (<div className="productCard" key={product.title} >
                         <img src={imageState} className="imgonProductCard" alt="v-neck" />
                         <div className="nameonproductCard">{product.title}</div>
                         <div className="priceonproductCard">US${product.price}</div>
                     </div>)
                 })
             )}
-
         </div>
     )
 }

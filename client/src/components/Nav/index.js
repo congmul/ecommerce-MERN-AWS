@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react'
+import React, { useState }  from 'react'
 import { Link } from "react-router-dom";
 import './style.scss';
 
@@ -10,7 +10,7 @@ const Nav = (props) => {
 
     const [ user, setUser ] = useState(null);
 
-    
+
 
     return (
         <div className="navBar">
@@ -18,6 +18,7 @@ const Nav = (props) => {
                 <Link to="/" className="nav-title">WOMEN</Link>
                 <Link to="/" className="nav-title">MEN</Link>
                 <Link to="/" className="nav-title">KIDS</Link>
+                {props.user ? (props.user.username === "admin" ? (<Link to="/admin" className="nav-title">ADMIN PAGE</Link>) : (<></>)) : <></> }
             </div>
             <div className="nav-center">
                 <Link to="/"><img src={logo} height="45px" alt="logo" /></Link>
@@ -36,6 +37,7 @@ const Nav = (props) => {
                     <div className="dropdown-content">
                         {props.user ? (
                         <>
+                        <div className="hello-userName">Hello {props.user.username.toUpperCase()}</div>
                         <Link to ="" onClick={()=> {Auth.signOut(); setUser(null)}}>Sign Out</Link>
                         <div className="myHr"></div>
                         <Link to="#">My Orders</Link>
