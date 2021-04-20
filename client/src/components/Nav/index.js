@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect }  from 'react'
 import { Link } from "react-router-dom";
 import './style.scss';
 
 import logo from '../../assets/img/logo_kangjung.png'
+import Auth from '@aws-amplify/auth';
 
-const Nav = () => {
+const Nav = (props) => {
+    console.log(props.user)
+
+    const [ user, setUser ] = useState(null);
+
+    
+
     return (
         <div className="navBar">
             <div className="nav-left">
@@ -27,11 +34,15 @@ const Nav = () => {
                     <Link to="/sign"><i className="far fa-user dropbtn" ></i></Link>
                     </div>
                     <div className="dropdown-content">
-                        <Link to="/sign">Sign In / Register</Link>
+                        {props.user ? (
+                        <>
+                        <Link to ="" onClick={()=> {Auth.signOut(); setUser(null)}}>Sign Out</Link>
                         <div className="myHr"></div>
                         <Link to="#">My Orders</Link>
                         <Link to="#">My Message</Link>
                         <Link to="#">Recently Viewed</Link>
+                        </>
+                        ): (<Link to="/sign">Sign In / Register</Link>)}
                     </div>
                 </div>
                 <div className="dropdown">
