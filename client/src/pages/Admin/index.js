@@ -1,9 +1,10 @@
 import React from 'react'
+import PostProduct from '../../components/PostProduct'
 
 function Admin() {
     return (
         <div>
-            Admin Pages
+            <PostProduct />
         </div>
     )
 }
