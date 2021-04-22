@@ -10,13 +10,6 @@ function Products() {
     const [products, setProducts] = useState([]);
     const [imageState, setImageState] = useState(demo_01);
 
-    // function mouseOver() {
-    //     setImageState(demo_02);
-    // }
-    // function mouseOut() {
-    //     setImageState(demo_01);
-    // }
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -39,13 +32,6 @@ function Products() {
         <div className="cardCollection product-container">
             {!isLoaded ? (<div>Loading...</div>) : (
                 products.map(product => {
-                    // return (<div className="productCard" key={product.title} onMouseOver={mouseOver} onMouseOut={mouseOut}>
-                //     return (<div className="productCard product-box" key={product.title} >
-                //         <img src={imageState} className="imgonProductCard" alt="v-neck" />
-                //         <div className="nameonproductCard">{product.title}</div>
-                //         <div className="priceonproductCard">US${product.price}</div>
-                //     </div>)
-                // })
                 return (<div className="product-box" key={product.title} >
                 <img src={imageState} alt="v-neck" />
                 <div className="nameonproductCard">{product.title}</div>
