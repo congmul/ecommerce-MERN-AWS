@@ -1,75 +1,40 @@
 @import '../../sass/mixin';
 @import '../../sass/variables';
 
+.product-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: 220px;
+    grid-gap: 1rem;
+    padding:1rem;
+    justify-items: center;
+
+    img{
+        width:100%;
+        height:75%;
+    }
+    .product-box{
+        width: 100%;
+    }
+
+    .nameonproductCard {
+        @include nameonproductCard;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .priceonproductCard{
+        @include priceonproductCard;
+    }
+
+}
 
 @media screen and (min-width: $mediumSize){
-    .cardCollection {
-        @include productCardCollection;
-    }
-    .productCard {
-        @include productCard(250px, 346px, 25px 15px);
-    
-        .nameonproductCard {
-            @include nameonproductCard;
-            display: block;
-            width: 250px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        .priceonproductCard{
-            @include priceonproductCard;
-        }
-    }
-    .imgonProductCard {
-        @include imgonProductCard(250px, 300px);
-    }
-}
-
-@media screen and (max-width: $mediumSize){
-    .cardCollection {
-        @include productCardCollection;
-    }
-    .productCard {
-        @include productCard(200px, 346px, 25px 15px);
-    
-        .nameonproductCard {
-            @include nameonproductCard;
-            display: block;
-            width: 200px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        .priceonproductCard{
-            @include priceonproductCard;
-        }
-    }
-    .imgonProductCard {
-        @include imgonProductCard(200px, 270px);
-    }
-}
-
-@media screen and (max-width: $smallSize){
-    .cardCollection {
-        @include productCardCollection;
-    }
-    .productCard {
-        @include productCard(150px, 245px, 10px 5px);
-    
-        .nameonproductCard {
-            @include nameonproductCard;
-            display: block;
-            width: 150px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        .priceonproductCard{
-            @include priceonproductCard;
-        }
-    }
-    .imgonProductCard {
-        @include imgonProductCard(150px, 200px);
+    .product-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-auto-rows: 300px;
     }
 }

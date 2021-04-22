@@ -17,21 +17,21 @@
     }
 }
 
-@mixin productCardCollection() {
-    display: inline-block;
-}
+// @mixin productCardCollection() {
+//     display: inline-block;
+// }
 
-@mixin imgonProductCard($widthSize, $heightSize) {
-    width: $widthSize;
-    height: $heightSize;
-}
+// @mixin imgonProductCard($widthSize, $heightSize) {
+//     width: $widthSize;
+//     height: $heightSize;
+// }
 
-@mixin productCard($widthSize, $heightSize, $margin) {
-    float: left;
-    margin: $margin;
-    height: $heightSize;
-    width: $widthSize;
-}
+// @mixin productCard($widthSize, $heightSize, $margin) {
+//     float: left;
+//     margin: $margin;
+//     height: $heightSize;
+//     width: $widthSize;
+// }
 
 @mixin nameonproductCard {
     color: rgb(49, 49, 49);

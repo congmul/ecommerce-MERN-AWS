@@ -36,16 +36,22 @@ function Products() {
 
 
     return (
-        <div className="cardCollection">
+        <div className="cardCollection product-container">
             {!isLoaded ? (<div>Loading...</div>) : (
                 products.map(product => {
                     // return (<div className="productCard" key={product.title} onMouseOver={mouseOver} onMouseOut={mouseOut}>
-                    return (<div className="productCard" key={product.title} >
-                        <img src={imageState} className="imgonProductCard" alt="v-neck" />
-                        <div className="nameonproductCard">{product.title}</div>
-                        <div className="priceonproductCard">US${product.price}</div>
-                    </div>)
-                })
+                //     return (<div className="productCard product-box" key={product.title} >
+                //         <img src={imageState} className="imgonProductCard" alt="v-neck" />
+                //         <div className="nameonproductCard">{product.title}</div>
+                //         <div className="priceonproductCard">US${product.price}</div>
+                //     </div>)
+                // })
+                return (<div className="product-box" key={product.title} >
+                <img src={imageState} alt="v-neck" />
+                <div className="nameonproductCard">{product.title}</div>
+                <div className="priceonproductCard">US${product.price}</div>
+            </div>)
+        })
             )}
         </div>
     )
