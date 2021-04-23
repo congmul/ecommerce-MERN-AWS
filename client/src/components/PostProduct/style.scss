@@ -1,10 +1,92 @@
 .container-post-product{
-    margin:50px;
-    text-align: center;
-    
-    .input-form{
-        margin-bottom: 50px;
+    margin: 40px;
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    // grid-gap: 5%;
+
+    font-size: 15px;
+
+    .posting-header{
+        font-size: 20px;
+        color: black;
+
+        grid-column: 2/-1;
     }
+
+    .posting-left-menu{
+        grid-column: 2/5;
+
+        color: rgb(100, 100, 100);
+
+        div {
+            margin-top: 20px;
+            padding: 0px 10px 10px 0px;
+        }
+
+        div::after{
+            content:"*";
+            color:red;
+        }
+
+    }
+
+    .posting-content{
+        grid-column: 5/-1;
+        grid-row: 2/3;
+
+        div {
+            margin-top: 20px;
+        }
+
+        input{
+            padding: 5px;
+            width: 100%;
+        }
+
+        select{
+            padding: 5px;
+            width: 20%;
+        }
+
+        button{
+            margin-top:30px;
+            padding: 12px;
+            width: 137.5px;
+            background-color: black;
+            color: white;
+            font-weight: bolder;
+            cursor: pointer;
+     
+         &:hover{
+             background-color: rgb(31, 31, 31);
+         }
+        }
+
+        .cancel-button{
+            margin:30px 0 0 30px;
+            padding: 12px;
+            width: 137.5px;
+            background-color: white;
+            color: black;
+            font-weight: bolder;
+            cursor: pointer;
+     
+         &:hover{
+             background-color: rgb(100, 100, 100);
+             color: white;
+         } 
+        }
+    }
+
+
+    // margin:50px;
+    // text-align: center;
+    
+    // .input-form{
+    //     margin-bottom: 50px;
+    // }
 
     // .label-left{
     //     margin-bottom: 50px;
