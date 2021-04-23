@@ -78,6 +78,20 @@
              color: white;
          } 
         }
+
+        .image-upload-button{
+            padding: 12px;
+            width: 137.5px;
+            background-color: white;
+            color: black;
+            font-weight: bolder;
+            cursor: pointer;
+     
+         &:hover{
+             background-color: rgb(100, 100, 100);
+             color: white;
+         }  
+        }
     }
 
 
