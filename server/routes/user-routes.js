@@ -3,11 +3,11 @@ const router = express.Router();
 const AWS = require("aws-sdk");
 const awsConfig = {
   region: "us-west-2",
-  endpoint: "http://localhost:8000",
-
+  // endpoint: "http://localhost:8000",
 };
 
 AWS.config.update(awsConfig);
+
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const table = "ProductLists";
 
@@ -29,7 +29,7 @@ router.post('/products', (req, res) => {
   // console.log(req.body);
   let price = parseFloat(req.body.price).toFixed(2);
 
-  // console.log(price);
+  console.log(req.body.image);
 
   const params = {
     TableName: table,
@@ -38,6 +38,7 @@ router.post('/products', (req, res) => {
       "createdAt": Date.now(),
       "title": req.body.title,
       "price": price,
+      "image": req.body.image
     }
   }
 

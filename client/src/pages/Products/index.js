@@ -18,6 +18,7 @@ function Products() {
                 // console.log(jsonData);
                 // sort the array by createdAt property ordered by descending values
                 const data = jsonData.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
+                console.log(data);
                 setProducts([...data]);
                 setIsLoaded(true);
             } catch (error) {
@@ -33,7 +34,7 @@ function Products() {
             {!isLoaded ? (<div>Loading...</div>) : (
                 products.map(product => {
                 return (<div className="product-box" key={product.title} >
-                <img src={imageState} alt="v-neck" />
+                <img src={product.image} alt="v-neck" />
                 <div className="nameonproductCard">{product.title}</div>
                 <div className="priceonproductCard">US${product.price}</div>
             </div>)
