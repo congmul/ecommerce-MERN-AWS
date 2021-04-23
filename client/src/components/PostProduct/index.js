@@ -15,6 +15,23 @@ function PostProduct() {
     const postBtn = (e) => {
         e.preventDefault()
         console.log(productInfo);
+
+        const postData = async () => {
+            const res = await fetch('/api/products', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(productInfo)
+            });
+            const data = await res.json();
+            console.log(data);
+        }
+
+        postData();
+
+        setProductInfo({"category":"women", "title":"", "price":""});
     }
 
     return (
