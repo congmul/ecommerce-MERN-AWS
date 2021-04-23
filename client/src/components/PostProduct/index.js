@@ -4,19 +4,43 @@ import './style.scss';
 
 function PostProduct() {
     const [productInfo, setProductInfo] = useState({ "category": "women", "title": "", "price": "" })
+    const [titleNotice, setTitleNotice] = useState("none");
+    const [priceNotice, setPriceNotice] = useState("none");
+
+    const [fillAllNotice, setFillAllNotice] = useState("none");
 
     const fileInput = useRef(null);
+
+    const handleFocusOut = e => {
+        // console.log(e.target.value);
+        // console.log(e.target.name);
+
+        if(e.target.value === ""){
+            // console.log("Not empty!!")
+            if(e.target.name==="title"){
+                setTitleNotice("block");
+            }else if(e.target.name==="price"){
+                setPriceNotice("block");
+            }
+        }else{
+            if(e.target.name==="title"){
+                setTitleNotice("none");
+            }else if(e.target.name==="price"){
+                setPriceNotice("none");
+            }
+        }
+    }
 
     const onChange = (e) => {
         let attribute = e.target.name;
         let value = e.target.value;
         setProductInfo({ ...productInfo, [attribute]: value });
+        // console.log(value);
     }
 
 
     const postBtn = (e) => {
         e.preventDefault()
-        console.log(productInfo);
 
         const postData = async () => {
             const res = await fetch('/api/products', {
@@ -31,9 +55,20 @@ function PostProduct() {
             console.log(data);
         }
 
-        postData();
+        console.log(productInfo);
+        if(productInfo.title === "" || productInfo.price === ""){
+            // console.log("Warning notice");
 
-        setProductInfo({ "category": "women", "title": "", "price": "" });
+            setFillAllNotice("block");
+            setInterval(() => {
+                setFillAllNotice("none");
+            }, 3000)
+
+        }else{
+            postData();
+        }
+
+        setProductInfo({ "category": "women", "title": "", "price": "", "image": "" });
     }
 
     const handleImageUpload = e => {
@@ -68,9 +103,9 @@ function PostProduct() {
 
     return (
         <div className="container-post-product">
+            <div className="posting-warning-notice" style={{"display": fillAllNotice}}>Please fill out all blank</div>
             <div className="posting-header">Listing details</div>
             <div className="posting-left-menu">
-                {/* <div className="subHead">Listing details</div> */}
                 <div>CATEGORY </div>
                 <div>TITLE </div>
                 <div>PRICE </div>
@@ -78,23 +113,21 @@ function PostProduct() {
             </div>
             <div className="posting-content">
                 <div className="input-form">
-                    {/* <label className="label-left" for="category">Choose a category : </label> */}
-                    <select value='Category' name="category" onChange={onChange}>
+                    <select name="category" onChange={onChange}>
                         <option value='women'>WOMEN</option>
                         <option value='men'>MEN</option>
                         <option value='kids'>KIDS</option>
                     </select>
                 </div>
                 <div className="input-form">
-                    {/* <label className="label-left">Title : </label> */}
-                    <input type="text" name="title" onChange={onChange} />
+                    <input type="text" name="title" onChange={onChange} onBlur={handleFocusOut} />
+                    <span style={{ "color": "red", "display": titleNotice }}>Please enter title.</span>
                 </div>
                 <div className="input-form">
-                    {/* <label className="label-left">Price : </label> */}
-                    <input type="text" name="price" onChange={onChange} />
+                    <input type="text" name="price" onChange={onChange} onBlur={handleFocusOut} />
+                    <span style={{ "color": "red", "display": priceNotice }}>Please enter price.</span>
                 </div>
                 <div className="input-form">
-                    {/* <label className="label-left">Images : </label> */}
                     <input type="file" ref={fileInput} />
                     <button
                         className="image-upload-button"

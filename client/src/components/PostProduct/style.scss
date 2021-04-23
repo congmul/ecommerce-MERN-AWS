@@ -8,6 +8,15 @@
 
     font-size: 15px;
 
+    .posting-warning-notice{
+        position: fixed;
+        text-align: center;
+        padding: 25px;
+        width: 90%;
+        color: #d40000;
+        background-color: rgba(255, 204, 204, 0.7);
+    }
+
     .posting-header{
         font-size: 20px;
         color: black;
