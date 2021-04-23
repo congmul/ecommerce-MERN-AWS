@@ -2,44 +2,69 @@
 @import '../../sass/variables';
 
 .navBar {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: 
+    "l l l l c c c c s s r r";
+
     background-color: rgb(230, 230, 230);
-    height: 70px;
-    
-    a {
-        @include anchor;
-    }
 
-    .nav-left{
-        display: flex;
-        float: left;
-        height: 70px;
-        width: 40%;
-        align-items: center;
-
+    .nav-left {
+        grid-area: l;
+        margin: auto auto auto 20px;
         .nav-title{
-            padding: 25px 15px;
+            @include anchor;
+            padding-right: 15px;
             font-weight: bolder;
         }
     }
-    
-    .nav-center{
-        display: flex;
-        float: left;
-        height: 70px;
-        width: 20%;
-        justify-content: center;
-        align-items: center;
+
+    .nav-center {
+        grid-area: c;
+        margin: auto;
     }
 
-    .nav-right{
-        display: flex;
-        float: right;
-        height: 70px;
-        width: 30%;
-        justify-content: center;
-        align-items: center;
-        
+    .nav-search{
+        grid-area: s;
+        align-self: center;
 
+        input[type=text] {
+            margin-left: 10px;
+            padding: 10px;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            width: 100px;
+        }
+
+        .search-container button{
+            padding: 10px 15px;
+            margin-right: 16px;
+            background: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            color: $titleColor;
+            &:hover{
+                color: $titleColorHover;
+            }
+      }
+
+    }
+
+    .nav-right {
+        grid-area: r;
+        // margin: auto;
+
+        display: flex;
+
+        .nav-icon{
+            padding: 26px 15px;
+            a {
+                @include anchor;
+            }
+        }
 
         .dropdown:hover{
             background-color: white;
@@ -48,58 +73,36 @@
             }
         }
 
-        .nav-icon{
-            padding: 26px 15px;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 120px;
+            text-align: left;
+            font-size: 13px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding:10px;
+            z-index: 1;
         }
-    }
+        .dropdown-content a {
+            color: $titleColor;
+            padding: 8px 5px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content:hover {color: $titleColorHover;}
 
-    input[type=text] {
-        margin-left: 10px;
-        padding: 10px;
-        font-size: 17px;
-        border: none;
-        border-radius: 5px 0 0 5px;
-        width: 100px;
-    }
 
-    .search-container button{
-        padding: 10px 15px;
-        margin-right: 16px;
-        background: white;
-        font-size: 17px;
-        border: none;
-        border-radius: 0 5px 5px 0;
-        cursor: pointer;
-        color: $titleColor;
-        &:hover{
+
+        .hello-userName{
             color: $titleColorHover;
+            padding: 8px 5px;
+            text-decoration: none;
+            display: block;
+            font-weight: bolder;
         }
-      }
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 120px;
-    text-align: left;
-    font-size: 13px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding:10px;
-    z-index: 1;
-  }
-  .dropdown-content a {
-    color: $titleColor;
-    padding: 8px 5px;
-    text-decoration: none;
-    display: block;
-  }
-.dropdown-content:hover {color: $titleColorHover;}
 
-.hello-userName{
-    color: $titleColorHover;
-    padding: 8px 5px;
-    text-decoration: none;
-    display: block;
-    font-weight: bolder;
+
+    }
 }
 

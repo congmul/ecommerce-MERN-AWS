@@ -10,8 +10,6 @@ const Nav = (props) => {
 
     const [ user, setUser ] = useState(null);
 
-
-
     return (
         <div className="navBar">
             <div className="nav-left">
@@ -23,13 +21,16 @@ const Nav = (props) => {
             <div className="nav-center">
                 <Link to="/"><img src={logo} height="45px" alt="logo" /></Link>
             </div>
-            <div className="nav-right">
+            <div className="nav-search">
                 <div className="search-container">
                     <form action="">
                         <input type="text" placeholder="Search" name="search" />
                         <button type="submit"><i className="fa fa-search"></i></button>
                     </form>
                 </div>
+            </div>
+            
+            <div className="nav-right">
                 <div className="dropdown" id="sign">
                     <div className="nav-icon">
                     <Link to="/sign"><i className="far fa-user dropbtn" ></i></Link>
