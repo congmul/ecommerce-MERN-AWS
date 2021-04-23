@@ -17,6 +17,19 @@
     }
 }
 
+@mixin footerStyle($backGroundColor, $textColor){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 70px;
+    width: 100%;
+
+    color: $textColor;
+    background-color: $backGroundColor;
+    font-weight: bolder;
+}
+
 // @mixin productCardCollection() {
 //     display: inline-block;
 // }
