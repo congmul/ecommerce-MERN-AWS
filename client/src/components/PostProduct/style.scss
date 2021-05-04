@@ -1,5 +1,6 @@
 .container-post-product{
     margin: 40px;
+    padding: 40px;
     display: grid;
 
     grid-template-columns: repeat(12, 1fr);
@@ -7,6 +8,7 @@
     // grid-gap: 5%;
 
     font-size: 15px;
+    box-shadow: 0px 3px 15px 1px rgba(0, 0, 0, 0.2);
 
     .posting-warning-notice{
         position: fixed;

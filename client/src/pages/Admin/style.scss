@@ -1,0 +1,22 @@
+.container-admin{
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    .admin-left{
+        margin: 40px;
+        padding-top: 40px;
+        font-size: 2em;
+        grid-column: 1/2;
+        .admin-left-menu{
+            padding-bottom: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .admin-right{
+        grid-column: 2/-1;
+    }
+
+
+}
