@@ -39,7 +39,7 @@ To get started, follow these steps:
 
 Run the following commands in your terminal
 
-    npm i
+    npm i 
 
 ## Contributing
 
